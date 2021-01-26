@@ -1,0 +1,42 @@
+SQL> 
+SQL> /* Part 1: Spatial Indexes */
+SQL> -- List names of 5 nearest countries to "Iran (Islamic Republic of)".
+SQL> select co1.name from COUNTRY2020 co1, COUNTRY2020 co2 where SDO_NN(co1.geom, co2.geom, 'sdo_num_res=6')='TRUE'
+  2  and co2.name = 'Iran (Islamic Republic of)' and co1.name <> 'Iran (Islamic Republic of)';
+
+NAME
+--------------------------------------------------
+Iraq
+Pakistan
+Turkey
+Turkmenistan
+Afghanistan
+
+SQL> -- List names of all countries crossed by the river of Amazon (Amazonas in RiVER2020 dataset)
+SQL> --select distinct co.name from COUNTRY2020 co, RIVER2020 ri where ri.name = 'Amazonas' and SDO_OVERLAPS(co.geom, ri.geom)='TRUE';
+SQL> select distinct co.name from COUNTRY2020 co, RIVER2020 ri where ri.name = 'Amazonas' and SDO_GEOM.SDO_INTERSECTION(co.geom, ri.geom) is not Null;
+
+NAME
+--------------------------------------------------
+Brazil
+Peru
+Colombia
+
+SQL> -- List names of all neighboring countries of "Iran (Islamic Republic of)".
+SQL> select distinct co2.name from COUNTRY2020 co1, COUNTRY2020 co2 where SDO_TOUCH(co1.geom, co2.geom)='TRUE'
+  2  and co1.name = 'Iran (Islamic Republic of)' and co2.name <> 'Iran (Islamic Republic of)';
+
+NAME
+--------------------------------------------------
+Armenia
+Pakistan
+Afghanistan
+Turkmenistan
+Azerbaijan
+Iraq
+Turkey
+
+7 rows selected.
+
+SQL> 
+SQL> spool off

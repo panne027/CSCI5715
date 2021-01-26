@@ -1,0 +1,53 @@
+SQL> 
+SQL> /* Load and Edit Tables */
+SQL> exec SDO_NET.CREATE_SDO_NETWORK('hennepin',1,TRUE,FALSE);
+
+PL/SQL procedure successfully completed.
+
+SQL> describe hennepin_node$;
+ Name                                                  Null?    Type
+ ----------------------------------------------------- -------- ------------------------------------
+ NODE_ID                                               NOT NULL NUMBER
+ NODE_NAME                                                      VARCHAR2(200)
+ NODE_TYPE                                                      VARCHAR2(200)
+ ACTIVE                                                         VARCHAR2(1)
+ PARTITION_ID                                                   NUMBER
+ GEOMETRY                                                       MDSYS.SDO_GEOMETRY
+
+SQL> insert into hennepin_node$ select * from csci5715.hennepin_node$;
+
+839 rows created.
+
+SQL> alter table hennepin_link$ add transit_id number;
+
+Table altered.
+
+SQL> describe hennepin_link$;
+ Name                                                  Null?    Type
+ ----------------------------------------------------- -------- ------------------------------------
+ LINK_ID                                               NOT NULL NUMBER
+ LINK_NAME                                                      VARCHAR2(200)
+ START_NODE_ID                                         NOT NULL NUMBER
+ END_NODE_ID                                           NOT NULL NUMBER
+ LINK_TYPE                                                      VARCHAR2(200)
+ ACTIVE                                                         VARCHAR2(1)
+ LINK_LEVEL                                                     NUMBER
+ GEOMETRY                                                       MDSYS.SDO_GEOMETRY
+ COST                                                           NUMBER
+ BIDIRECTED                                                     VARCHAR2(1)
+ TRANSIT_ID                                                     NUMBER
+
+SQL> insert into hennepin_link$ select * from csci5715.hennepin_link$;
+
+1722 rows created.
+
+SQL> describe csci5715.hennepin_transit_time;
+ Name                                                  Null?    Type
+ ----------------------------------------------------- -------- ------------------------------------
+ TRANSIT_ID                                                     NUMBER
+ START_TIME                                                     NUMBER
+ END_TIME                                                       NUMBER
+ TRANSIT_TIME                                                   NUMBER
+
+SQL> 
+SQL> spool off

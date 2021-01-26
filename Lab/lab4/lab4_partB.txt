@@ -1,0 +1,138 @@
+SQL> 
+SQL> -- How many links are in the network?
+SQL> select SDO_NET.GET_NO_OF_LINKS('hennepin') from DUAL;
+
+SDO_NET.GET_NO_OF_LINKS('HENNEPIN')
+-----------------------------------
+                               1722
+
+SQL> -- How many nodes are in the network?
+SQL> select SDO_NET.GET_NO_OF_NODES('hennepin') from DUAL;
+
+SDO_NET.GET_NO_OF_NODES('HENNEPIN')
+-----------------------------------
+                                839
+
+SQL> -- What is the degree of node 140776?
+SQL> select distinct SDO_NET.GET_NODE_DEGREE('hennepin', 140776) from DUAL;
+
+SDO_NET.GET_NODE_DEGREE('HENNEPIN',140776)
+------------------------------------------
+                                         4
+
+SQL> -- Find all nodes with an OUT degree of at most 1.
+SQL> select node_id from hennepin_node$ where SDO_NET.GET_NODE_OUT_DEGREE('hennepin', node_id) <= 1;
+
+   NODE_ID
+----------
+     11358
+     25335
+    100773
+    134381
+      5721
+    103376
+    142527
+    142546
+    139276
+     45312
+    100821
+    127387
+     46652
+    123246
+     41320
+     96866
+     18139
+     94826
+    160616
+     45248
+     39187
+
+   NODE_ID
+----------
+     43058
+    104309
+     47510
+     43020
+    132210
+    103402
+    142597
+    143053
+    143095
+
+30 rows selected.
+
+SQL> -- What is the average IN degree of all nodes in the network?
+SQL> select AVG(SDO_NET.GET_NODE_IN_DEGREE('hennepin',node_id)) as Avg_In_Degree from hennepin_node$;
+
+AVG_IN_DEGREE
+-------------
+   2.05244338
+
+SQL> -- Retrieve the travel times (TRANSIT_TIME) for link 300 with start time and end time occuring between 630 and 1020.
+SQL> select tr.transit_time from csci5715.hennepin_transit_time tr, hennepin_link$ lnk where lnk.link_id = 300 and tr.start_time >= 630 and tr.end_time <= 1020 and tr.transit_id = lnk.transit_id;
+
+TRANSIT_TIME
+------------
+  .356355976
+  .356355976
+  .356355976
+  .370061976
+  .370061976
+  .370061976
+  .384864455
+  .384864455
+  .384864455
+  .384864455
+  .384864455
+  .384864455
+  .384864455
+  .384864455
+  .384864455
+  .384864455
+  .384864455
+  .370061976
+  .370061976
+  .370061976
+  .370061976
+
+TRANSIT_TIME
+------------
+  .356355976
+  .356355976
+  .356355976
+  .356355976
+  .356355976
+
+26 rows selected.
+
+SQL> -- Retrieve the travel times (TRANSIT_TIME) for link 300 with start time and end time occuring between 1230 and 1440.
+SQL> select tr.transit_time from csci5715.hennepin_transit_time tr, hennepin_link$ lnk where lnk.link_id = 300 and tr.start_time >= 1230 and tr.end_time <= 1440 and tr.transit_id = lnk.transit_id;
+
+TRANSIT_TIME
+------------
+  .320720379
+  .320720379
+  .320720379
+  .320720379
+  .320720379
+  .320720379
+  .320720379
+  .320720379
+  .320720379
+  .320720379
+  .320720379
+  .320720379
+  .320720379
+  .320720379
+
+14 rows selected.
+
+SQL> -- What are the minimum and maximum travel times for link 1000?
+SQL> select MIN(tr.transit_time) as Min_Transit_Time, MAX(tr.transit_time) as Max_Transit_Time from csci5715.hennepin_transit_time tr, hennepin_link$ lnk where lnk.link_id = 1000 and tr.transit_id = lnk.transit_id;
+
+MIN_TRANSIT_TIME MAX_TRANSIT_TIME
+---------------- ----------------
+       .10151537       .156177492
+
+SQL> 
+SQL> spool off

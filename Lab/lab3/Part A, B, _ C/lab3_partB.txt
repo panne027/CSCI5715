@@ -1,0 +1,121 @@
+SQL> 
+SQL> -- List airports can be arrived from "Sun Valley/Hailey/Ketchum, ID" (AIRPORT_ID: 15041) with at most one stop?
+SQL> with arrivals_from_SunValleyID (start_node_id, end_node_id, search_depth) as (
+  2  	 select start_node_id, end_node_id, 0 search_depth from airport_link$ where start_node_id = 15041
+  3  	 union all select lnk.start_node_id, lnk.end_node_id, arv.search_depth+1
+  4  	 from arrivals_from_SunValleyID arv, airport_link$ lnk
+  5  	 where arv.end_node_id = lnk.start_node_id and arv.search_depth = 0)
+  6  select distinct lst.airport_name, lst.airport_id from arrivals_from_SunValleyID arv, airport_list lst
+  7  where search_depth <= 1 and arv.end_node_id = lst.airport_id;
+
+AIRPORT_NAME                                       AIRPORT_ID
+-------------------------------------------------- ----------
+Detroit, MI                                             11433
+Santa Ana, CA                                           14908
+Newark, NJ                                              11618
+Great Falls, MT                                         12003
+Tucson, AZ                                              15376
+Ontario, CA                                             13891
+New York, NY                                            12478
+Dallas/Fort Worth, TX                                   11298
+Baltimore, MD                                           10821
+Bend/Redmond, OR                                        14489
+Oklahoma City, OK                                       13851
+Helena, MT                                              12156
+Tulsa, OK                                               15370
+San Antonio, TX                                         14683
+Missoula, MT                                            13486
+Medford, OR                                             13264
+Twin Falls, ID                                          15389
+Anchorage, AK                                           10299
+Orlando, FL                                             13204
+Palm Springs, CA                                        14262
+St. George, UT                                          14794
+
+AIRPORT_NAME                                       AIRPORT_ID
+-------------------------------------------------- ----------
+Indianapolis, IN                                        12339
+Spokane, WA                                             11884
+Minneapolis, MN                                         13487
+Colorado Springs, CO                                    11109
+Long Beach, CA                                          12954
+Houston, TX                                             12266
+Billings, MT                                            10620
+Nashville, TN                                           10693
+Washington, DC                                          11278
+Cody, WY                                                11097
+Phoenix, AZ                                             14107
+Burbank, CA                                             10800
+Lewiston, ID                                            13127
+Honolulu, HI                                            12173
+St. Louis, MO                                           15016
+Albuquerque, NM                                         10140
+Denver, CO                                              11292
+Washington, DC                                          12264
+Pasco/Kennewick/Richland, WA                            14252
+Oakland, CA                                             13796
+Jackson, WY                                             12441
+
+AIRPORT_NAME                                       AIRPORT_ID
+-------------------------------------------------- ----------
+Butte, MT                                               10779
+Grand Junction, CO                                      11921
+Portland, OR                                            14057
+Boston, MA                                              10721
+Gillette, WY                                            11865
+Rock Springs, WY                                        14543
+Rapid City, SD                                          14457
+Sun Valley/Hailey/Ketchum, ID                           15041
+Austin, TX                                              10423
+Chicago, IL                                             13930
+Cedar City, UT                                          10918
+San Francisco, CA                                       14771
+Boise, ID                                               10713
+Elko, NV                                                11525
+Fargo, ND                                               11637
+Los Angeles, CA                                         12892
+Pocatello, ID                                           14113
+Philadelphia, PA                                        14100
+Casper, WY                                              11122
+Eugene, OR                                              11603
+San Diego, CA                                           14679
+
+AIRPORT_NAME                                       AIRPORT_ID
+-------------------------------------------------- ----------
+Atlanta, GA                                             10397
+Bozeman, MT                                             10849
+Seattle, WA                                             14747
+Memphis, TN                                             13244
+Fresno, CA                                              11638
+Chicago, IL                                             13232
+Salt Lake City, UT                                      14869
+Cincinnati, OH                                          11193
+Reno, NV                                                14570
+Kansas City, MO                                         13198
+Kalispell, MT                                           11648
+Omaha, NE                                               13871
+San Jose, CA                                            14831
+Charlotte, NC                                           11057
+Idaho Falls, ID                                         12280
+Las Vegas, NV                                           12889
+New Orleans, LA                                         13495
+West Yellowstone, MT                                    15897
+Sacramento, CA                                          14893
+
+82 rows selected.
+
+SQL> -- List the least number of stops is needed flying from "Honolulu, HI" (AIRPORT_ID: 12173) to "New York, NY" (AIRPORT_ID: 12953)
+SQL> -- Note: Limits depth of search to 2 for now to avoid cycles and reduce computation time.
+SQL> with HonaluluHI_to_NewYorkNY (start_node_id, end_node_id, num_stops) as (
+  2  	 select start_node_id, end_node_id, 0 num_stops from airport_link$ where start_node_id = 12173
+  3  	 union all select lnk.start_node_id, lnk.end_node_id, hny.num_stops+1
+  4  	 from HonaluluHI_to_NewYorkNY hny, airport_link$ lnk
+  5  	 where hny.end_node_id = lnk.start_node_id and hny.start_node_id <> lnk.start_node_id and hny.num_stops <= 2)
+  6  select min(num_stops) as min_stops_Honalulu_to_NewYork from HonaluluHI_to_NewYorkNY where end_node_id = 12953;
+
+MIN_STOPS_HONALULU_TO_NEWYORK
+-----------------------------
+                            1
+
+SQL> 
+SQL> spool off

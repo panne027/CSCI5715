@@ -1,0 +1,26 @@
+CSCI 5715 - Group 1
+Harish Panneer Selvam
+Matthew Eagon
+
+Lab 2
+Part CSCI
+
+Works in IE, Edge, Firefox
+Main code edit: 
+geoinfo_string="<br/>" + string_head +"Current position: lat=" + prev_lat + "\u00B0, long=" + prev_long + "\u00B0 (accuracy " + prev_acc + "m) <br/>last reading taken at: "+ current_time;
+
+Sample Output:
+Csci 5715 - Current position: lat=44.951713388507976°, long=-93.29720925723204° (accuracy 92m) 
+last reading taken at: 05:01:17
+Csci 5715 - Current position: lat=44.951699961353796°, long=-93.29716929455826° (accuracy 92m) 
+last reading taken at: 05:01:28
+Csci 5715 - Current position: lat=44.95174109990995°, long=-93.29707968114° (accuracy 94m) 
+last reading taken at: 05:01:40
+Csci 5715 - Current position: lat=44.95175212012251°, long=-93.29714086281254° (accuracy 97m) 
+last reading taken at: 05:01:52
+Csci 5715 - Current position: lat=44.95174601928823°, long=-93.29715712457684° (accuracy 90m) 
+last reading taken at: 05:02:06
+Csci 5715 - Current position: lat=44.95173988306593°, long=-93.29722231685518° (accuracy 90m) 
+last reading taken at: 05:02:18
+Csci 5715 - Current position: lat=44.951737550696045°, long=-93.29725813038072° (accuracy 88m) 
+last reading taken at: 05:02:30

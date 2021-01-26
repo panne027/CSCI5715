@@ -1,0 +1,278 @@
+SQL> 
+SQL> /* Part 1: Selection and Projection */
+SQL> 
+SQL> /* List all countries (without duplicates) in South America and Africa, sorted by population in year 2008 in descending order. */
+SQL> select distinct co.name, co.population, co.year from country co where co.year=2008 and (region='South America' or region ='Africa') order by co.population desc;
+
+NAME                                               POPULATION YEAR
+-------------------------------------------------- ---------- ----
+Zaire                                                         2008
+Brazil                                              190010647 2008
+Nigeria                                             135031164 2008
+Egypt                                                80335036 2008
+Ethiopia                                             76511887 2008
+South Africa                                         43997828 2008
+Argentina                                            40301927 2008
+Sudan                                                39379358 2008
+Kenya                                                36913721 2008
+Morocco                                              33757175 2008
+Algeria                                              33333216 2008
+Uganda                                               30262610 2008
+Peru                                                 28674757 2008
+Venezuela                                            26023528 2008
+Ghana                                                22931299 2008
+Mozambique                                           20905585 2008
+Madagascar                                           19448815 2008
+Cameroon                                             18060382 2008
+Chile                                                16284741 2008
+Ecuador                                              13755680 2008
+Malawi                                               13603181 2008
+
+NAME                                               POPULATION YEAR
+-------------------------------------------------- ---------- ----
+Niger                                                12894865 2008
+Senegal                                              12521851 2008
+Zimbabwe                                             12311143 2008
+Angola                                               12263596 2008
+Mali                                                 11995402 2008
+Zambia                                               11477447 2008
+Tunisia                                              10276158 2008
+Guinea                                                9947814 2008
+Rwanda                                                9907509 2008
+Chad                                                  9885661 2008
+Bolivia                                               9119152 2008
+Somalia                                               9118773 2008
+Burundi                                               8390505 2008
+Benin                                                 8078314 2008
+Paraguay                                              6669086 2008
+Sierra Leone                                          6144562 2008
+Togo                                                  5701579 2008
+Eritrea                                               4906585 2008
+Central African Republic                              4369038 2008
+Uruguay                                               3460607 2008
+Mauritania                                            3270065 2008
+
+NAME                                               POPULATION YEAR
+-------------------------------------------------- ---------- ----
+Liberia                                               3195931 2008
+Lesotho                                               2125262 2008
+Namibia                                               2055080 2008
+Botswana                                              1815508 2008
+Gabon                                                 1454867 2008
+Swaziland                                             1133066 2008
+Guyana                                                 769095 2008
+Comoros                                                711417 2008
+Equatorial Guinea                                      551201 2008
+Djibouti                                               496374 2008
+Suriname                                               470784 2008
+Sao Tome and Principe                                  199579 2008
+Seychelles                                              81895 2008
+
+55 rows selected.
+
+SQL> /* List all European countries (without duplicates) with a population more than one million (2,500,500) in year 2006. */
+SQL> select distinct co.name, co.population, co.year from country co where co.year=2008 and (region='South America' or region ='Africa') and co.population > 1000000 order by co.population desc;
+
+NAME                                               POPULATION YEAR
+-------------------------------------------------- ---------- ----
+Brazil                                              190010647 2008
+Nigeria                                             135031164 2008
+Egypt                                                80335036 2008
+Ethiopia                                             76511887 2008
+South Africa                                         43997828 2008
+Argentina                                            40301927 2008
+Sudan                                                39379358 2008
+Kenya                                                36913721 2008
+Morocco                                              33757175 2008
+Algeria                                              33333216 2008
+Uganda                                               30262610 2008
+Peru                                                 28674757 2008
+Venezuela                                            26023528 2008
+Ghana                                                22931299 2008
+Mozambique                                           20905585 2008
+Madagascar                                           19448815 2008
+Cameroon                                             18060382 2008
+Chile                                                16284741 2008
+Ecuador                                              13755680 2008
+Malawi                                               13603181 2008
+Niger                                                12894865 2008
+
+NAME                                               POPULATION YEAR
+-------------------------------------------------- ---------- ----
+Senegal                                              12521851 2008
+Zimbabwe                                             12311143 2008
+Angola                                               12263596 2008
+Mali                                                 11995402 2008
+Zambia                                               11477447 2008
+Tunisia                                              10276158 2008
+Guinea                                                9947814 2008
+Rwanda                                                9907509 2008
+Chad                                                  9885661 2008
+Bolivia                                               9119152 2008
+Somalia                                               9118773 2008
+Burundi                                               8390505 2008
+Benin                                                 8078314 2008
+Paraguay                                              6669086 2008
+Sierra Leone                                          6144562 2008
+Togo                                                  5701579 2008
+Eritrea                                               4906585 2008
+Central African Republic                              4369038 2008
+Uruguay                                               3460607 2008
+Mauritania                                            3270065 2008
+Liberia                                               3195931 2008
+
+NAME                                               POPULATION YEAR
+-------------------------------------------------- ---------- ----
+Lesotho                                               2125262 2008
+Namibia                                               2055080 2008
+Botswana                                              1815508 2008
+Gabon                                                 1454867 2008
+Swaziland                                             1133066 2008
+
+47 rows selected.
+
+SQL> /* List the regions (without duplicates) of all countries starts with the letter "a" or "i" (lowercase) in their names. */
+SQL> select distinct co.name, co.region from country co where substr(lower(co.name), 1, 1)='a' or substr(lower(co.name), 1, 1)='i' order by co.region, co.name asc;
+
+NAME
+--------------------------------------------------
+REGION
+------------------------------------------------------------
+Algeria
+Africa
+
+Angola
+Africa
+
+Iceland
+Arctic Region
+
+Afghanistan
+Asia
+
+India
+Asia
+
+Anguilla
+Central America and the Caribbean
+
+Aruba
+
+NAME
+--------------------------------------------------
+REGION
+------------------------------------------------------------
+Central America and the Caribbean
+
+Armenia
+Commonwealth of Independent States - European States
+
+Azerbaijan
+Commonwealth of Independent States - European States
+
+Albania
+Ethnic Groups in Eastern Europe, Europe
+
+Andorra
+Europe
+
+Austria
+Europe
+
+Ireland
+Europe
+
+NAME
+--------------------------------------------------
+REGION
+------------------------------------------------------------
+
+Italy
+Europe
+
+Iran
+Middle East
+
+Iraq
+Middle East
+
+Israel
+Middle East
+
+American Samoa
+Oceania
+
+Australia
+Oceania
+
+
+NAME
+--------------------------------------------------
+REGION
+------------------------------------------------------------
+Argentina
+South America
+
+Indonesia
+Southeast Asia
+
+
+21 rows selected.
+
+SQL> 
+SQL> /*---------------------------------------------------------------------------*/
+SQL> 
+SQL> /* Part 2: Summarization, Aggregation */
+SQL> 
+SQL> /* Find how many countries (without duplicates) there are in Asia and show their average GDP in year 2006. */
+SQL> select distinct co.region, count(co.name) as numCountries_2006, avg(co.gdp) as regionGDP_2006 from country co where co.year=2006 and region='Asia' group by co.region;
+
+REGION                                                       NUMCOUNTRIES_2006 REGIONGDP_2006
+------------------------------------------------------------ ----------------- --------------
+Asia                                                                        11     .059454545
+
+SQL> /* List all the regions (without duplicates) with at least 8 countries whose population is greater than 500,000 in year 2007. */
+SQL> select distinct co.region, count(co.name) as pop500000Countries_2007 from country co where co.year=2007 and co.population>=500000 group by co.region having count(co.name) >= 8 order by co.region asc;
+
+REGION                                                       POP500000COUNTRIES_2007
+------------------------------------------------------------ -----------------------
+Africa                                                                            40
+Asia                                                                              10
+Central America and the Caribbean                                                 11
+Ethnic Groups in Eastern Europe, Europe                                            9
+Europe                                                                            19
+Middle East                                                                       15
+South America                                                                     10
+
+7 rows selected.
+
+SQL> 
+SQL> /*---------------------------------------------------------------------------*/
+SQL> 
+SQL> /* Part 3: Insert, Update, and Delete */
+SQL> 
+SQL> /* Insert a new row with Country name = "MyNewCountry", with population = 1 and area = 5 (with any year and continent you want). */
+SQL> insert into country (name,year,region,area,population,gdp) values ('MyNewCountry',2000,'North America',5,1,0.0);
+
+1 row created.
+
+SQL> /* Update the area to 95 for all the rows that have an area below 95. */
+SQL> update country set area=95 where area<95;
+
+208 rows updated.
+
+SQL> /* Update the population value of countries that are zero or Null to the average population in that region. */
+SQL> --update country set population=nullif(population,0);
+SQL> update country co set population=(select distinct avg(population) from country where region=co.region and year=co.year group by region, year) where population=0 or population is Null;
+
+103 rows updated.
+
+SQL> 
+SQL> /* Delete all the rows that have null values for the gdp or population field. */
+SQL> delete from country where population is Null or gdp is Null;
+
+461 rows deleted.
+
+SQL> 
+SQL> 
+SQL> spool off

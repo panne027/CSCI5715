@@ -1,0 +1,261 @@
+                                 _____________________________
+
+                                        SaTScan v9.6.1
+                                 _____________________________
+
+
+Program run on: Tue Nov 17 08:49:31 2020
+
+Purely Spatial analysis
+scanning for clusters with high rates
+using the Continuous Poisson model.
+_______________________________________________________________________________________________
+
+SUMMARY OF DATA
+
+Number of locations................: 1000
+Total number of cases..............: 1000
+Total Area.........................: 1000000
+_______________________________________________________________________________________________
+
+CLUSTERS DETECTED
+
+1.Location IDs included.: 396, 899, 960, 878, 979, 958, 936, 809, 831, 868, 903, 993, 844, 823,
+                          309, 906, 969, 827, 968, 971, 801, 920, 967, 821, 944, 981, 843, 924,
+                          857, 852, 931, 837, 923, 900, 930, 975, 876, 859, 869, 992, 105, 980,
+                          912, 945, 816, 964, 204, 966, 846, 828, 849, 856, 848, 255, 836, 917,
+                          530, 949, 810, 946, 970, 940, 842, 456, 972, 911, 974, 817, 934, 937,
+                          850, 854, 855, 948, 925, 877, 847, 840, 908, 929, 927, 907, 995, 880,
+                          826, 962, 941, 804, 874, 959, 918, 896, 885, 963, 939, 834, 879, 888,
+                          978, 884, 965, 991, 875, 933, 802, 858, 928, 853, 112, 866, 904, 986,
+                          845, 835, 985, 819, 829, 447, 766, 897, 902, 983, 987, 901, 872, 976,
+                          951, 998, 812, 860, 832, 865, 841, 1000, 913, 815, 943, 950, 882,
+                          891, 862, 989, 938, 830, 576, 883, 806, 808, 984, 839, 996, 919, 916,
+                          990, 932, 818, 873, 994, 895, 982, 947, 52, 910, 811, 922, 997, 820,
+                          861, 886, 898, 814, 952, 813, 833, 889, 805, 863, 926, 871, 851, 955,
+                          999, 838, 867, 915, 956, 890, 893, 957, 954, 894, 864, 988, 935, 201,
+                          914, 807, 517, 803, 824, 905, 84, 977, 336, 961, 825, 942, 921, 174,
+                          973, 822, 417, 47, 887, 870, 477, 953, 881
+  Coordinates / radius..: (495.177,504.398) / 79.21
+  Number of cases.......: 218
+  Expected cases........: 19.71
+  Observed / expected...: 11.06
+  Log likelihood ratio..: 347.215154
+  P-value...............: 0.001
+
+2.Location IDs included.: 593, 77
+  Coordinates / radius..: (890.476,800.921) / 0.46
+  Number of cases.......: 2
+  Expected cases........: 0.00066
+  Observed / expected...: 3034.82
+  Log likelihood ratio..: 14.038472
+  P-value...............: 0.002
+
+3.Location IDs included.: 520, 65
+  Coordinates / radius..: (100.222,476.08) / 1.59
+  Number of cases.......: 2
+  Expected cases........: 0.0080
+  Observed / expected...: 251.16
+  Log likelihood ratio..: 9.062142
+  P-value...............: 0.207
+
+4.Location IDs included.: 114, 312
+  Coordinates / radius..: (648.991,784.423) / 1.80
+  Number of cases.......: 2
+  Expected cases........: 0.010
+  Observed / expected...: 196.42
+  Log likelihood ratio..: 8.572722
+  P-value...............: 0.297
+
+5.Location IDs included.: 365, 740, 431
+  Coordinates / radius..: (769.114,187.713) / 5.33
+  Number of cases.......: 3
+  Expected cases........: 0.089
+  Observed / expected...: 33.64
+  Log likelihood ratio..: 7.640972
+  P-value...............: 0.536
+
+6.Location IDs included.: 176, 731, 436
+  Coordinates / radius..: (120.612,146.515) / 5.44
+  Number of cases.......: 3
+  Expected cases........: 0.093
+  Observed / expected...: 32.29
+  Log likelihood ratio..: 7.521707
+  P-value...............: 0.569
+
+7.Location IDs included.: 583, 767
+  Coordinates / radius..: (396.521,51.4483) / 2.36
+  Number of cases.......: 2
+  Expected cases........: 0.017
+  Observed / expected...: 114.30
+  Log likelihood ratio..: 7.497177
+  P-value...............: 0.575
+
+8.Location IDs included.: 121, 526
+  Coordinates / radius..: (173.389,450.394) / 2.48
+  Number of cases.......: 2
+  Expected cases........: 0.019
+  Observed / expected...: 103.29
+  Log likelihood ratio..: 7.296478
+  P-value...............: 0.646
+
+9.Location IDs included.: 275, 598
+  Coordinates / radius..: (91.1135,661.596) / 2.59
+  Number of cases.......: 2
+  Expected cases........: 0.021
+  Observed / expected...: 94.79
+  Log likelihood ratio..: 7.126452
+  P-value...............: 0.691
+
+10.Location IDs included.: 677, 640, 28
+   Coordinates / radius..: (108.818,127.037) / 5.85
+   Number of cases.......: 3
+   Expected cases........: 0.11
+   Observed / expected...: 27.90
+   Log likelihood ratio..: 7.097833
+   P-value...............: 0.705
+
+11.Location IDs included.: 764, 53, 676
+   Coordinates / radius..: (525.045,980.455) / 6.19
+   Number of cases.......: 3
+   Expected cases........: 0.12
+   Observed / expected...: 24.95
+   Log likelihood ratio..: 6.775268
+   P-value...............: 0.791
+
+12.Location IDs included.: 357, 496
+   Coordinates / radius..: (330.858,853.064) / 3.41
+   Number of cases.......: 2
+   Expected cases........: 0.037
+   Observed / expected...: 54.67
+   Log likelihood ratio..: 6.041312
+   P-value...............: 0.957
+
+13.Location IDs included.: 175, 631
+   Coordinates / radius..: (482.022,95.3727) / 3.42
+   Number of cases.......: 2
+   Expected cases........: 0.037
+   Observed / expected...: 54.29
+   Log likelihood ratio..: 6.027556
+   P-value...............: 0.958
+
+14.Location IDs included.: 161, 260
+   Coordinates / radius..: (32.6008,515.367) / 3.56
+   Number of cases.......: 2
+   Expected cases........: 0.040
+   Observed / expected...: 50.31
+   Log likelihood ratio..: 5.878216
+   P-value...............: 0.971
+
+15.Location IDs included.: 742, 351, 533
+   Coordinates / radius..: (740.648,323.186) / 7.37
+   Number of cases.......: 3
+   Expected cases........: 0.17
+   Observed / expected...: 17.59
+   Log likelihood ratio..: 5.777123
+   P-value...............: 0.981
+
+16.Location IDs included.: 446, 573
+   Coordinates / radius..: (49.5326,235.367) / 3.74
+   Number of cases.......: 2
+   Expected cases........: 0.044
+   Observed / expected...: 45.60
+   Log likelihood ratio..: 5.685791
+   P-value...............: 0.987
+
+17.Location IDs included.: 141, 471
+   Coordinates / radius..: (951.63,574.737) / 3.92
+   Number of cases.......: 2
+   Expected cases........: 0.048
+   Observed / expected...: 41.33
+   Log likelihood ratio..: 5.493518
+   P-value...............: 0.994
+
+18.Location IDs included.: 116, 663
+   Coordinates / radius..: (453.798,913.712) / 4.17
+   Number of cases.......: 2
+   Expected cases........: 0.055
+   Observed / expected...: 36.64
+   Log likelihood ratio..: 5.258950
+   P-value...............: 0.996
+
+19.Location IDs included.: 334, 637
+   Coordinates / radius..: (530.344,26.1071) / 4.31
+   Number of cases.......: 2
+   Expected cases........: 0.058
+   Observed / expected...: 34.26
+   Log likelihood ratio..: 5.128272
+   P-value...............: 0.997
+
+20.Location IDs included.: 342, 451
+   Coordinates / radius..: (149.997,645.129) / 4.48
+   Number of cases.......: 2
+   Expected cases........: 0.063
+   Observed / expected...: 31.76
+   Log likelihood ratio..: 4.981450
+   P-value...............: 0.999
+_______________________________________________________________________________________________
+
+PARAMETER SETTINGS
+
+Input
+-----
+  Coordinates File : D:\Users\mdog9\Desktop\Graduate School\Classes\2020 - Fall\CSCI 5715\Lab\lab3\random_circle.csv
+  Grid File        : D:\Users\mdog9\Desktop\Graduate School\Classes\2020 - Fall\CSCI 5715\Lab\lab3\random_circle.csv
+  Coordinates      : Cartesian
+
+Analysis
+--------
+  Type of Analysis    : Purely Spatial
+  Probability Model   : Continuous Poisson
+  Scan for Areas with : High Rates
+
+Output
+------
+  Main Results File : D:\Users\mdog9\Desktop\Graduate School\Classes\2020 - Fall\CSCI 5715\Lab\lab3\circle_SatScan_output.txt
+
+Polygons
+--------
+  Polygon 1 : 1y + 0x + 0 >= 0, 1y + 0x - 1000 <= 0, 0y + 1x + 0 >= 0, 0y + 1x - 1000 <= 0
+
+Data Checking
+-------------
+  Geographical Data Check : Check to ensure that all observations (cases, controls and populations) are within the specified geographical area.
+
+Spatial Window
+--------------
+  Maximum Spatial Cluster Size : 50 percent of population at risk
+  Window Shape                 : Circular
+
+Cluster Restrictions
+--------------------
+  Minimum Cases in Cluster for High Rates : 2
+  Restrict High Rate Clusters             : No
+
+Inference
+---------
+  P-Value Reporting      : Default Combination
+  Number of Replications : 999
+
+Spatial Output
+--------------
+  Report Hierarchical Clusters              : Yes
+  Criteria for Reporting Secondary Clusters : No Geographical Overlap
+  Report Gini Optimized Cluster Collection  : No
+  Restrict Reporting to Smaller Clusters    : No
+
+Other Output
+------------
+  Report Critical Values  : No
+  Report Monte Carlo Rank : No
+
+Run Options
+-----------
+  Processor Usage   : All Available Processors
+  Suppress Warnings : No
+  Logging Analysis  : No
+_______________________________________________________________________________________________
+
+Program completed  : Tue Nov 17 08:50:00 2020
+Total Running Time : 29 seconds
+Processor Usage    : 8 processors

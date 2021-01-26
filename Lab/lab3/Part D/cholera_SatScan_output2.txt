@@ -1,0 +1,110 @@
+                                 _____________________________
+
+                                        SaTScan v9.6.1
+                                 _____________________________
+
+
+Program run on: Tue Nov 17 09:52:15 2020
+
+Purely Spatial analysis
+scanning for clusters with high rates
+using the Continuous Poisson model.
+_______________________________________________________________________________________________
+
+SUMMARY OF DATA
+
+Number of locations................: 250
+Total number of cases..............: 250
+Total Area.........................: 6109772
+_______________________________________________________________________________________________
+
+CLUSTERS DETECTED
+
+1.Location IDs included.: 225, 224, 138, 137, 139, 223, 226, 222, 227, 233, 217, 216, 232, 221,
+                          228, 136, 215, 210, 74, 220, 130, 229, 209, 75, 73, 214, 211, 218,
+                          131, 230, 72, 212, 132, 128, 207, 76, 213, 125, 208, 71, 219, 133,
+                          127, 111, 231, 70, 196, 77, 134, 234, 129, 198, 110, 238, 194, 78,
+                          83, 235, 197, 109, 195, 206, 79, 236, 193, 205, 157, 108, 192, 156,
+                          80, 117, 69, 126, 135, 190, 107, 68, 191, 86, 81, 84, 155, 6, 124,
+                          158, 199, 67, 106, 154, 185, 123, 200, 85, 203, 201, 87, 82, 112, 66,
+                          204, 202, 113, 122, 5, 59, 105, 4, 3, 2, 104, 65, 121, 246, 1, 62,
+                          239, 88, 60, 58, 63, 20, 90, 19, 18, 64, 119, 164, 89, 57, 61, 8, 91,
+                          240, 186, 187, 120, 182, 247, 162, 152, 163, 161, 92, 94, 243, 153,
+                          7, 118, 241, 140, 10, 188, 159, 150, 242, 183, 160, 9, 143, 151, 184,
+                          142, 93, 237, 11, 141, 149, 165, 148, 52, 15, 14, 13, 55, 101, 114,
+                          56, 51, 103, 12, 54, 167, 166, 245, 189, 53, 102, 96, 168, 169, 16,
+                          244, 43, 50, 26, 45, 116, 97, 21, 46, 17, 47, 22, 27, 95, 181, 49,
+                          28, 48, 98, 25, 44, 29, 171, 100, 180, 172, 24, 170, 115, 144, 23,
+                          173, 174, 36, 41, 99, 175, 146, 145, 30, 248, 176, 32, 31, 42, 40,
+                          177, 250, 249, 178, 38, 39, 147
+  Coordinates / radius..: (529427,181055) / 231.10
+  Number of cases.......: 245
+  Expected cases........: 6.87
+  Observed / expected...: 35.69
+  Log likelihood ratio..: 856.396950
+  P-value...............: 0.001
+_______________________________________________________________________________________________
+
+PARAMETER SETTINGS
+
+Input
+-----
+  Coordinates File : D:\Users\mdog9\Desktop\Graduate School\Classes\2020 - Fall\CSCI 5715\Lab\lab3\london_cholera.csv
+  Grid File        : D:\Users\mdog9\Desktop\Graduate School\Classes\2020 - Fall\CSCI 5715\Lab\lab3\london_cholera.csv
+  Coordinates      : Cartesian
+
+Analysis
+--------
+  Type of Analysis    : Purely Spatial
+  Probability Model   : Continuous Poisson
+  Scan for Areas with : High Rates
+
+Output
+------
+  Main Results File : D:\Users\mdog9\Desktop\Graduate School\Classes\2020 - Fall\CSCI 5715\Lab\lab3\cholera_SatScan_output2.txt
+
+Polygons
+--------
+  Polygon 1 : 0y + 1x - 528160 >= 0, 0y + 1x - 530656 <= 0, 1y + 0x - 179858 >= 0, 1y + 0x - 182306 <= 0
+
+Data Checking
+-------------
+  Geographical Data Check : Check to ensure that all observations (cases, controls and populations) are within the specified geographical area.
+
+Spatial Window
+--------------
+  Maximum Spatial Cluster Size : 50 percent of population at risk
+  Window Shape                 : Circular
+
+Cluster Restrictions
+--------------------
+  Minimum Cases in Cluster for High Rates : 2
+  Restrict High Rate Clusters             : No
+
+Inference
+---------
+  P-Value Reporting      : Default Combination
+  Number of Replications : 999
+
+Spatial Output
+--------------
+  Report Hierarchical Clusters              : Yes
+  Criteria for Reporting Secondary Clusters : No Geographical Overlap
+  Report Gini Optimized Cluster Collection  : No
+  Restrict Reporting to Smaller Clusters    : No
+
+Other Output
+------------
+  Report Critical Values  : No
+  Report Monte Carlo Rank : No
+
+Run Options
+-----------
+  Processor Usage   : All Available Processors
+  Suppress Warnings : No
+  Logging Analysis  : No
+_______________________________________________________________________________________________
+
+Program completed  : Tue Nov 17 09:52:17 2020
+Total Running Time : 2 seconds
+Processor Usage    : 8 processors

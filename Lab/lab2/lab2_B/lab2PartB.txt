@@ -1,0 +1,195 @@
+SQL> 
+SQL> /*What is the distance from the center of city of "Los Angeles" to the center line of river of "Mississippi"*/
+
+NAME                                                     AREA
+-------------------------------------------------- ----------
+Italy                                              3.0051E+11
+
+SQL> 
+SQL> SELECT SDO_GEOM.SDO_DISTANCE(r.GEOM, c.GEOM, 0.5) as distance
+  2  FROM csci5715.RIVERS r, csci5715.CITIES c
+  3  WHERE r.name = 'Mississippi'
+  4  AND c.name = 'Los Angeles';
+
+  DISTANCE
+----------
+1340744.42
+
+SQL> 
+SQL> /*1) Where is the centroid of "Mexico"?*/
+SQL> select sdo_geom.sdo_centroid(n.geom, m.diminfo) as centroid
+  2  from csci5715.countries n, user_sdo_geom_metadata m
+  3  where n.name='Mexico';
+
+CENTROID(SDO_GTYPE, SDO_SRID, SDO_POINT(X, Y, Z), SDO_ELEM_INFO, SDO_ORDINATES)
+----------------------------------------------------------------------------------------------------
+SDO_GEOMETRY(2001, 4326, SDO_POINT_TYPE(-102.19304, 23.9362922, NULL), NULL, NULL)
+SDO_GEOMETRY(2001, 4326, SDO_POINT_TYPE(-102.19304, 23.9362922, NULL), NULL, NULL)
+SDO_GEOMETRY(2001, 4326, SDO_POINT_TYPE(-102.19304, 23.9362922, NULL), NULL, NULL)
+
+SQL> 
+SQL> /*2)Show a list of all distinct values of 'region_un' column from COUNTRIES;*/
+SQL> select distinct n.region
+  2  from csci5715.countries n;
+
+    REGION
+----------
+         2
+       142
+        19
+         9
+       150
+         0
+
+6 rows selected.
+
+SQL> 
+SQL> /*4) Provide the Minimum Orthogonal Bounding Rectangles (MBR) for "Canada";*/
+SQL> select sdo_geom.sdo_mbr(n.geom, m.diminfo) as MBR
+  2  from csci5715.countries n, user_sdo_geom_metadata m
+  3  where n.name='Canada';
+
+MBR(SDO_GTYPE, SDO_SRID, SDO_POINT(X, Y, Z), SDO_ELEM_INFO, SDO_ORDINATES)
+----------------------------------------------------------------------------------------------------
+SDO_GEOMETRY(2003, 4326, NULL, SDO_ELEM_INFO_ARRAY(1, 1003, 3), SDO_ORDINATE_ARRAY(-141.00299, 41.67
+5552, -52.614449, 83.113876))
+
+SDO_GEOMETRY(2003, 4326, NULL, SDO_ELEM_INFO_ARRAY(1, 1003, 3), SDO_ORDINATE_ARRAY(-141.00299, 41.67
+5552, -52.614449, 83.113876))
+
+SDO_GEOMETRY(2003, 4326, NULL, SDO_ELEM_INFO_ARRAY(1, 1003, 3), SDO_ORDINATE_ARRAY(-141.00299, 41.67
+5552, -52.614449, 83.113876))
+
+
+SQL> 
+SQL> /*5)Show the names of all rivers and order them by length in descending order.*/
+SQL> select r.name
+  2  from csci5715.rivers r, user_sdo_geom_metadata m
+  3  order by sdo_geom.sdo_length(r.geom, m.diminfo) desc;
+
+NAME
+----------------------------------------------------------------------------------------------------
+Nile
+Nile
+Nile
+Amazonas
+Amazonas
+Amazonas
+Chang
+Chang
+Chang
+Mississippi
+Mississippi
+Mississippi
+Mekong
+Mekong
+Mekong
+Ob
+Ob
+Ob
+Lena
+Lena
+Lena
+
+NAME
+----------------------------------------------------------------------------------------------------
+Congo
+Congo
+Congo
+Peace
+Peace
+Peace
+Parana
+Parana
+Parana
+Brahmaputra
+Brahmaputra
+Brahmaputra
+Donau
+Donau
+Donau
+Yangtze
+Yangtze
+Yangtze
+
+39 rows selected.
+
+SQL> 
+SQL> /*6) Name the cities within 1000000 units distance of the river of "Mississippi" (explicitly use tolerance of 0.5) and the corresonding countries they fall into. (Hint: SDO_CONTAINS, SDO_INSIDE)*/
+SQL> SELECT distinct c.name as City, n.name as Country
+  2  FROM csci5715.RIVERS r, csci5715.CITIES c, csci5715.COUNTRIES n, user_sdo_geom_metadata m
+  3  WHERE SDO_GEOM.WITHIN_DISTANCE(r.GEOM,1000000,c.GEOM, 0.5)='TRUE'
+  4  AND SDO_CONTAINS(n.GEOM,c.GEOM)='TRUE'
+  5  AND r.name = 'Mississippi';
+
+CITY
+----------------------------------------------------------------------------------------------------
+COUNTRY
+--------------------------------------------------
+Denver
+United States
+
+Miami
+United States
+
+Chicago
+United States
+
+Houston
+United States
+
+Havana
+Cuba
+
+Vancouver
+Canada
+
+Atlanta
+
+CITY
+----------------------------------------------------------------------------------------------------
+COUNTRY
+--------------------------------------------------
+United States
+
+
+7 rows selected.
+
+SQL> 
+SQL> /*7)What is the distance from the river "Mississippi" to the city of "Chicago"? (get tolerance from USER_SDO_GEOM_METADATA table)*/
+SQL> select distinct sdo_geom.sdo_distance(c.geom, r.geom, (SELECT sdo_tolerance FROM TABLE(select DIMINFO from user_sdo_geom_metadata WHERE ROWNUM=2))) as distance
+  2  from csci5715.rivers r, csci5715.cities c, user_sdo_geom_metadata m
+  3  where c.name='Chicago' and r.name= 'Mississippi';
+
+  DISTANCE
+----------
+393966.712
+
+SQL> 
+SQL> /*8)Find the name of the longest river.*/
+SQL> select distinct r.name
+  2  from csci5715.rivers r, user_sdo_geom_metadata m
+  3  where sdo_geom.sdo_length(r.geom, m.diminfo)=
+  4  	     (select max(sdo_geom.sdo_length(r1.geom, m1.diminfo))
+  5  	     from csci5715.rivers r1, user_sdo_geom_metadata m1);
+
+NAME
+----------------------------------------------------------------------------------------------------
+Nile
+
+SQL> 
+SQL> /*9) Which country has the second largest area in the COUNTRIES table?*/
+SQL> select distinct c.name
+  2  from csci5715.countries c, user_sdo_geom_metadata m
+  3  where sdo_geom.sdo_area(c.geom,m.diminfo)=(select max(sdo_geom.sdo_area(c1.geom,m1.diminfo))
+  4  from csci5715.countries c1, user_sdo_geom_metadata m1
+  5  where sdo_geom.sdo_area(c1.geom,m1.diminfo)<
+  6  (select max(sdo_geom.sdo_area(c2.geom,m2.diminfo))
+  7  from csci5715.countries c2, user_sdo_geom_metadata m2));
+
+NAME
+--------------------------------------------------
+Antarctica
+
+SQL> 
+SQL> spool off

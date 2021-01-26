@@ -1,0 +1,110 @@
+SQL> 
+SQL> /* Part A: SQL/Oracle Tutorial */
+SQL> 
+SQL> /* Example Queries */
+SQL> select tablespace_name, table_name from user_tables;
+
+TABLESPACE_NAME
+------------------------------
+TABLE_NAME
+----------------------------------------------------------------------------------------------------
+USERS
+COUNTRY
+
+
+SQL> describe COUNTRY
+ Name                                                  Null?    Type
+ ----------------------------------------------------- -------- ------------------------------------
+ NAME                                                  NOT NULL CHAR(50)
+ YEAR                                                  NOT NULL CHAR(4)
+ REGION                                                         CHAR(60)
+ AREA                                                           NUMBER(10)
+ POPULATION                                                     NUMBER(11)
+ GDP                                                            NUMBER
+
+SQL> select distinct name from country where region='South America';
+
+NAME
+--------------------------------------------------
+Brazil
+Argentina
+Paraguay
+Guyana
+Suriname
+Uruguay
+Ecuador
+Venezuela
+Chile
+Bolivia
+Peru
+
+11 rows selected.
+
+SQL> 
+SQL> /* Suggested Spool Queries*/
+SQL> select distinct name from country where region='Africa';
+
+NAME
+--------------------------------------------------
+Equatorial Guinea
+Ethiopia
+Liberia
+Nigeria
+Sao Tome and Principe
+Zimbabwe
+Cameroon
+Chad
+Madagascar
+Malawi
+Mauritania
+Togo
+Uganda
+Tunisia
+Ghana
+Sierra Leone
+Swaziland
+Zambia
+Algeria
+Eritrea
+Niger
+
+NAME
+--------------------------------------------------
+Somalia
+Sudan
+Benin
+Djibouti
+Comoros
+Gabon
+Egypt
+Namibia
+Rwanda
+Botswana
+Burundi
+Central African Republic
+Mozambique
+South Africa
+Seychelles
+Zaire
+Guinea
+Mali
+Morocco
+Angola
+Lesotho
+
+NAME
+--------------------------------------------------
+Kenya
+Senegal
+
+44 rows selected.
+
+SQL> select distinct name from country where region = 'Europe' and name like 'A%';
+
+NAME
+--------------------------------------------------
+Austria
+Andorra
+
+SQL> 
+SQL> spool off

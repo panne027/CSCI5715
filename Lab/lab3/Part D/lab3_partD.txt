@@ -1,0 +1,24 @@
+1. Are the results statistically significant for the random.csv dataset (p-value < 0.01)?
+See random_SatScan_output.txt for the output from the random.csv dataset. 
+The first two clusters have p-values of 0.003 for cluster 1 and 0.005 for cluster 2.
+However, the radii are very small (<0.75) and each cluster only contains 2 points.
+There are no truly significant clusters in the random data.
+See the SatScan_clusters powerpoint file for the visualized clusters.
+
+2. Are the results statistically significant for the random_circle.csv dataset (p-value < 0.01)?
+See the circle_SatScan_output.txt file for the output from the random_circle.csv dataset.
+The first two clusters have p-values of 0.001 for cluster 1 and 0.002 for cluster 2.
+The second cluster is not truly significant, it is equivalent to cluster 1 in the random.csv dataset.
+The first cluster has a much larger radius (79.21), and contains 218 datapoints. It is clearly significant.
+See the SatScan_clusters powerpoint file for the visualized significant clusters.
+
+3. Report the results of hotspot detection for the London Cholera dataset within the first range of study area.
+See cholera_SatScan_output1.txt for the output from the london_cholera.csv dataset.
+See the SatScan_clusters powerpoint file for the visualized significant clusters.
+There is one major significant cluster with 144 cases, a LLR of 60.4 and a p-value of 0.001.
+Another statistically significant cluster was found with 5 cases, a LLR of 11.4, and a p-value of 0.006.
+
+4. Report the results of hotspot detection for the London Cholera dataset within the second range of study area.
+See cholera_SatScan_output2.txt for the output from the london_cholera.csv dataset.
+See the SatScan_clusters powerpoint file for the visualized significant clusters.
+With the refined searchspace, only one hotspot was found with 245 cases, a LLR of 856.4, and a p-value of 0.001.

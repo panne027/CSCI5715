@@ -1,0 +1,32 @@
+SQL> 
+SQL> /* Part A Queries*/
+SQL> -- How many links are in the network?
+SQL> select SDO_NET.GET_NO_OF_LINKS('airport') from DUAL;
+
+SDO_NET.GET_NO_OF_LINKS('AIRPORT')
+----------------------------------
+                              4093
+
+SQL> -- How many nodes are in the network?
+SQL> select SDO_NET.GET_NO_OF_NODES('airport') from DUAL;
+
+SDO_NET.GET_NO_OF_NODES('AIRPORT')
+----------------------------------
+                               293
+
+SQL> -- What is the degree of node "San Francisco, CA"?
+SQL> select distinct SDO_NET.GET_NODE_DEGREE('airport', AIRPORT_ID) from airport_list where airport_name = 'San Francisco, CA';
+
+SDO_NET.GET_NODE_DEGREE('AIRPORT',AIRPORT_ID)
+---------------------------------------------
+                                          150
+
+SQL> -- What is the average out degree of all nodes in the network?
+SQL> select avg(SDO_NET.GET_NODE_OUT_DEGREE('airport', airport_ID)) from airport_list;
+
+AVG(SDO_NET.GET_NODE_OUT_DEGREE('AIRPORT',AIRPORT_ID))
+------------------------------------------------------
+                                            13.9692833
+
+SQL> 
+SQL> spool off

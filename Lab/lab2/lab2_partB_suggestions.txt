@@ -1,0 +1,52 @@
+Possible SQL Queries
+
+6. Name the cities within 1000000 units distance of the river of "Mississippi" (explicitly use tolerance of 0.5) and the corresonding countries they fall into. (Hint: SDO_CONTAINS, SDO_INSIDE)
+SELECT c.name, n.name, SDO_GEOM.SDO_DISTANCE(r.GEOM, c.GEOM, 0.5) as distance
+FROM csci5715.RIVERS r, csci5715.CITIES c, csci5715.COUNTRIES n
+WHERE SDO_GEOM.WITHIN_DISTANCE(r.GEOM,1000000,c.GEOM, 0.5)='TRUE'
+AND SDO_CONTAINS(n.GEOM,c.GEOM)='TRUE'
+AND r.name = 'Mississippi';
+
+SELECT c.name, n.name
+FROM csci5715.RIVERS r, csci5715.CITIES c, csci5715.COUNTRIES n
+WHERE SDO_GEOM.WITHIN_DISTANCE(r.GEOM,1000000,c.GEOM, 0.5)='TRUE'
+AND SDO_CONTAINS(n.GEOM,c.GEOM)='TRUE'
+AND r.name = 'Mississippi';
+
+SELECT c.name, n.name
+FROM csci5715.RIVERS r, csci5715.CITIES c, csci5715.COUNTRIES n
+WHERE SDO_CONTAINS(SDO_GEOM.SDO_BUFFER(r.GEOM,1000000,0.5),c.GEOM)='TRUE'
+AND SDO_CONTAINS(n.GEOM,c.GEOM)='TRUE'
+AND r.name = 'Mississippi';
+
+7. What is the distance from the river "Mississippi" to the city of "Chicago"? (get tolerance from USER_SDO_GEOM_METADATA table)
+SELECT c.name, SDO_GEOM.SDO_DISTANCE(r.GEOM, m.DIMINFO, c.GEOM, m.DIMINFO) as distance
+FROM csci5715.RIVERS r, csci5715.CITIES c, USER_SDO_GEOM_METADATA m 
+WHERE m.table_name = 'CITIES' AND m.column_name = 'GEOM'
+AND c.name = 'Chicago'
+AND r.name = 'Mississippi';
+
+SELECT SDO_GEOM.SDO_DISTANCE(c.GEOM, m.DIMINFO, r.GEOM, m.DIMINFO) as distanceChicago2Mississippi
+FROM csci5715.RIVERS r, csci5715.CITIES c, USER_SDO_GEOM_METADATA m 
+WHERE m.table_name = 'CITIES' AND m.column_name = 'GEOM' 
+AND c.name = 'Chicago'
+AND r.name = 'Mississippi';
+
+9. Which country has the second largest area in the COUNTRIES table?
+SELECT n.name, MAX(SDO_GEOM.SDO_AREA(n.GEOM, m.DIMINFO)) as area
+FROM csci5715.COUNTRIES n, USER_SDO_GEOM_METADATA m 
+WHERE m.table_name = 'COUNTRIES' AND m.column_name = 'GEOM'
+AND area < (SELECT MAX(SDO_GEOM.SDO_AREA(n.GEOM, m.DIMINFO)) as area 
+            FROM csci5715.COUNTRIES n, USER_SDO_GEOM_METADATA m 
+            WHERE m.table_name = 'COUNTRIES' AND m.column_name = 'GEOM');
+
+SELECT MAX(SDO_GEOM.SDO_AREA(n.GEOM, 0.5)) as area
+FROM csci5715.COUNTRIES n 
+WHERE area<(SELECT MAX(SDO_GEOM.SDO_AREA(n.GEOM, 0.5)) as area 
+            FROM csci5715.COUNTRIES n);
+
+SELECT SDO_GEOM.SDO_AREA(n.GEOM, 0.5) as area
+FROM csci5715.COUNTRIES n 
+WHERE area=(SELECT DISTINCT SDO_GEOM.SDO_AREA(n.GEOM, 0.5) as area
+            FROM csci5715.COUNTRIES
+            ORDER BY area LIMIT 1,1);

@@ -1,0 +1,31 @@
+CSCI 5715 - Group 1
+Harish Panneer Selvam
+Matthew Eagon
+
+Lab 2
+Part D
+
+Main code edit: 
+center: { lat: 44.9778, lng: -93.2650 } <-- centers map on Minneapolis, MN (see javascript code)
+
+Task 1
+https://jsfiddle.net/exf9huLy/5/show
+
+Number  City            Country         Continent       Latitude        Longitude
+------- --------------- --------------- --------------- --------------- --------------
+1       Lira            Uganda          Africa          2.2580829       32.8874067
+2       Guilin, Guangxi China           Asia            25.234479       110.179953
+3       Stavanger       Norway          Europe          58.9699756      5.7331074
+4       Spokane, WA     USA             North America   47.6587802      -117.4260465
+5       Bunbury WA 6230 Australia       Oceania         -33.3209971     115.6383482
+6       Trujillo        Peru            South America   -8.1060428      -79.0329727
+
+Task 2
+https://jsfiddle.net/L9e6jvo4/1/show/
+
+Number  Latitude        Longitude       Country         Continent       Address
+------- --------------- --------------- --------------- --------------- -------------------------------------------------------------------
+1       40              30              Turkey          Asia            Süleymaniye, Unnamed Road, 11800 Demirköy/Pazaryeri/Bilecik, Turkey
+2       -10             20              Angola          Africa          Mona Quimbundo, Angola
+3       45              93              China           Asia            Barköl Kazakh Autonomous County, Hami, Xinjiang, China
+4       30              -110            Mexico          North America   Cumpas, Sonora, Mexico
